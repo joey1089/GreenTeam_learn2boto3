@@ -16,7 +16,6 @@ for bucket in buckets:
     print("S3 bucket name : ",bucket["Name"])
 
 
-
 # print("Created S3 object : ",s3)
 # try:
 #     del s3
