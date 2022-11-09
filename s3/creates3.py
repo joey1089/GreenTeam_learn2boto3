@@ -8,7 +8,7 @@ get_bucketname = resource_s3.Bucket(get_userinput)
 response = get_bucketname.create(  
     ACL = 'private',
     CreateBucketConfiguration={
-        'LocationConstraint': 'us-east-2'
+        'LocationConstraint': 'us-east-2' #check why only us-east-2 is accepted
     },
 )
 print("s3 response :",response)
