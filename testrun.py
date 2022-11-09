@@ -8,6 +8,7 @@ aws_resource_s3 = boto3.client("s3") # created a s3 object
 # list_s3_obj = s3.list_objects(Bucket="s3")["Contents"] # work after cli profile configuration
 # print(len(list_s3_obj))
 
+# List out the bucket name in S3
 response = aws_resource_s3.list_buckets()
 buckets = response["Buckets"]
 
