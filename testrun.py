@@ -29,6 +29,7 @@ import boto3
 client = boto3.client('translate')
 
 def translate_text(): # translate given in target language 
+    #https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html
     response = client.translate_text(
         Text='I am learning to code in AWS', 
         SourceLanguageCode='en', 
@@ -36,5 +37,7 @@ def translate_text(): # translate given in target language
     )
 #### Add the new text below this line ####
     print(response) # this code is inside the function and will print the contents of the variable 'response' 
+    for text in response:
+        print("Translated Text : ",text[4])
 
 translate_text() # This line will call our function. Without it, python will not do anything.
