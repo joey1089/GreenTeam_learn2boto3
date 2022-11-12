@@ -14,5 +14,5 @@ response = client.delete_bucket(
 )
 
 print(response)
-# buckets = get_response["Buckets"] # needs new logic to count again
+# buckets = get_response["Buckets"] # needs new logic to recount 
 # print('\n After Deletion count :',len(buckets))
