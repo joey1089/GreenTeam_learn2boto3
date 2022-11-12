@@ -37,7 +37,8 @@ def translate_text(): # translate given in target language
     )
 #### Add the new text below this line ####
     print(response) # this code is inside the function and will print the contents of the variable 'response' 
-    for text in response:
-        print("Translated Text : ",text[4])
+    # for text in response:
+    #     print("Translated Text : ",text[4])
+    print(response['TranslatedText'])
 
 translate_text() # This line will call our function. Without it, python will not do anything.
