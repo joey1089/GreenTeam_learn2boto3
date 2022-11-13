@@ -1,20 +1,15 @@
+#Here we get all ec2 found for the configured aws account
 import boto3
 
 
-
 ec2 = boto3.client('ec2')
-
 response = ec2.describe_instances()
-
 reservations = response['Reservations']
-
 # print(reservations)
-
 for reservation in reservations:
     instances = reservation['Instances']
-
     for instance in instances:
-        print(instance['InstanceId'], instance['ImageId'])
+        print(instance['InstanceId'], instance['ImageId'], instance['InstanceType'])
         
     # for tag in tags.ec2():
     #     print(tag['key'],tag['value'])
