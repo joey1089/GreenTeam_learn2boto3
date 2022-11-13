@@ -1,4 +1,4 @@
-#Here we get all ec2 found for the configured aws account
+#Here we list all ec2 found for the configured aws account
 import boto3
 
 
