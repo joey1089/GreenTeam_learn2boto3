@@ -7,18 +7,16 @@ def create_ec2(Min,Max,imageid,instancetype):
             InstanceType=instancetype,
             MinCount=Min,
             MaxCount=Max,
-            KeyName= 'GreenTeam_Week14_Code',
+            KeyName= 'GreenTeam_Week14_Project',
             TagSpecifications=[
                 {
                     'ResourceType': 'instance',
-                    'Tags': [{'Key': 'Name','Value': 'Dev_Test01 Server'},
-                    {'Key': 'Env','Value': 'Dev'}]
-                            },
+                    'Tags': [{'Key': 'Name','Value': 'Dev_Test Server'},
+                    {'Key': 'Environment','Value': 'Dev'}]
+                },
                         ],
                         )
     return get_response['Instances']
-    # for _ in get_response['Instances']:
-    #     print(f"Instance ID Created is :{_['InstanceId']} and Instance Type Created is : {_['InstanceType']}")
 
 get_min = int(input("whats the minimum no of EC2 instance : "))
 get_max = int(input("Whats the maximum no of EC2 Instance : "))
@@ -27,7 +25,7 @@ get_instancetype = str(input("Input your Instance Type : "))
 get_created_ec2 = create_ec2(get_min,get_max,get_imageid,get_instancetype)
 print("List of Created Instances : ")
 for instance in get_created_ec2:
-    print(f"Instance ID : {instance['InstanceId']} , Instance Type : {instance['InstanceType']}")
+    print(f"Instance ID : {instance['InstanceId']} , Type : {instance['InstanceType']}")
 
 
 
