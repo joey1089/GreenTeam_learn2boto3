@@ -1,3 +1,4 @@
+# This code creates S3 Buckets
 import boto3
 
 # gets the list of buckets from S3
@@ -21,6 +22,3 @@ response = get_bucketname.create(
     },
 )
 print("s3 response :",response)
-
-
-
