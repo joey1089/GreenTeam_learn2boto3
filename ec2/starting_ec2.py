@@ -1,4 +1,4 @@
-#Code to start running ec2 instances
+#Code to start the stopped ec2 instances
 import boto3
 
 ec2 = boto3.resource('ec2', region_name='us-east-1')
