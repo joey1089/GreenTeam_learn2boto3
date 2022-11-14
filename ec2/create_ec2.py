@@ -26,10 +26,3 @@ get_created_ec2 = create_ec2(get_min,get_max,get_imageid,get_instancetype)
 print("List of Created Instances : ")
 for instance in get_created_ec2:
     print(f"Instance ID : {instance['InstanceId']} , Type : {instance['InstanceType']}")
-
-
-
-# 'Instances':[{'AmiLaunchIndex': 0, 'ImageId': 'ami-09d3b3274b6c5d4aa', 'InstanceId': 'i-0773173a1ab6a6867', 'InstanceType': 't2.micro', 
-# 'KeyName': 'GreenTeam_Week14_Code', 'LaunchTime': datetime.datetime(20...o=tzutc()), 'Monitoring': {...}, 'Placement': {...}, 'PrivateDnsName': 'ip-172-31-93-35.ec2.internal', ...}]
-# Full Response = {'Groups': [], 'Instances': [{...}], 'OwnerId': '282495905450', 'ReservationId': 'r-043b46aa51822cb3c', 
-# 'ResponseMetadata': {'RequestId': '8d1beae1-217f-4945-9...b0ed14420c', 'HTTPStatusCode': 200, 'HTTPHeaders': {...}, 'RetryAttempts': 0}}
