@@ -11,7 +11,7 @@ def create_ec2(Min,Max,imageid,instancetype):
             TagSpecifications=[
                 {
                     'ResourceType': 'instance',
-                    'Tags': [{'Key': 'Name','Value': 'Dev_Test Server'},
+                    'Tags': [{'Key': 'Name','Value': 'Dev Server'},
                     {'Key': 'Environment','Value': 'Dev'}]
                 },
                         ],
