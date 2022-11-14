@@ -14,8 +14,8 @@ def stopped_environment_instances(ec2):
     
 if __name__ == "__main__":
     get_stopped_list = stopped_environment_instances(ec2)
-    if get_stopped_list != []:
-        print("List of stopped instances : ", get_stopped_list)
+    # if get_stopped_list != []:
+    #     print("List of stopped instances : ", get_stopped_list)
 
 
 
