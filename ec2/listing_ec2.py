@@ -11,10 +11,6 @@ for reservation in reservations:
     for instance in instances:
         print(instance['InstanceId'], instance['ImageId'], instance['InstanceType'])
         
-    # for tag in tags.ec2():
-    #     print(tag['key'],tag['value'])
-        
-
 
 # resource_ec2 = boto3.client('ec2')
 # resource_ec2 = boto3.resource('ec2')
