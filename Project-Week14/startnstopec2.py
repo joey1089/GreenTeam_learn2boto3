@@ -4,7 +4,7 @@
 import boto3
 
 getObj_ec2 = boto3.client('ec2') #Creating object to create the ec2 instances
-ec2 = boto3.resource('ec2', region_name='us-east-1') #Creating object to 
+
 
 def create_ec2(ec2Obj,Min,Max,imageid,instancetype):
     
