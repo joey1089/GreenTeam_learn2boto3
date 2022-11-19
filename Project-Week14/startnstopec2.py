@@ -1,7 +1,10 @@
+#The plan of this project is to start and stop ec2 instances as and when needed but also terminate instances whenever the user wants
 # Here we create EC2 Instances and list the created EC2 Instances
+#<----- Work pending in intergration to call each fn to perform operations whenever needed ------>
 import boto3
 
-getObj_ec2 = boto3.client('ec2')
+getObj_ec2 = boto3.client('ec2') #Creating object to create the ec2 instances
+ec2 = boto3.resource('ec2', region_name='us-east-1') #Creating object to 
 
 def create_ec2(ec2Obj,Min,Max,imageid,instancetype):
     
@@ -34,8 +37,7 @@ for instance in get_created_ec2:
     print(f"Instance ID : {instance['InstanceId']} , Type : {instance['InstanceType']}")
 
 #Code to start the stopped ec2 instances
-import boto3
-ec2 = boto3.resource('ec2', region_name='us-east-1')
+start_ec2 = boto3.resource('ec2', region_name='us-east-1')
 def starting_instances(ec2):
     starting_list = []
     stopped_instances = ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['stopped']},{'Name': 'tag:Environment','Values':['Dev']}])
@@ -44,13 +46,11 @@ def starting_instances(ec2):
         starting_list.append(ec2.instances.filter(InstanceIds=[id]).start())
     return starting_list
 
-get_starting_list = starting_instances(ec2)
+get_starting_list = starting_instances(start_ec2)
 
 
 #Code to stop running ec2 instances
-import boto3
-
-ec2 = boto3.resource('ec2', region_name='us-east-1')
+stop_ec2 = boto3.resource('ec2', region_name='us-east-1')
 
 def stopped_environment_instances(ec2):
     stopped_list = []
@@ -61,10 +61,11 @@ def stopped_environment_instances(ec2):
     return stopped_list
 
     
-get_stopped_list = stopped_environment_instances(ec2)
+get_stopped_list = stopped_environment_instances(stop_ec2)
 print("Get the response : ",get_stopped_list)
 
-resource_ec2 = boto3.client('ec2')
+# Terminate all ec2 instances
+terminate_ec2 = boto3.client('ec2')
 
 def termin_ec2(ec2Obj):
     ''' This fn needs ec2 obj as argument and it terminates all instance found in the acccount and returns response list'''
@@ -77,7 +78,6 @@ def termin_ec2(ec2Obj):
     return list_termin_ec2
 
 # print("Terminated EC2 Instance list : ",list_termin_ec2)
-
 #call the fn
-terminated_ec2 =termin_ec2(resource_ec2)
+terminated_ec2 =termin_ec2(terminate_ec2)
 print(terminated_ec2)
