@@ -64,4 +64,20 @@ def stopped_environment_instances(ec2):
 get_stopped_list = stopped_environment_instances(ec2)
 print("Get the response : ",get_stopped_list)
 
-    
+resource_ec2 = boto3.client('ec2')
+
+def termin_ec2(ec2Obj):
+    ''' This fn needs ec2 obj as argument and it terminates all instance found in the acccount and returns response list'''
+    terminate_ec2 = []
+    get_response = ec2Obj.describe_instances()
+    for resource in get_response['Reservations']:
+        for instance in resource['Instances']:
+            terminate_ec2.append(instance['InstanceId'])
+    list_termin_ec2 = ec2Obj.terminate_instances(InstanceIds=(terminate_ec2))
+    return list_termin_ec2
+
+# print("Terminated EC2 Instance list : ",list_termin_ec2)
+
+#call the fn
+terminated_ec2 =termin_ec2(resource_ec2)
+print(terminated_ec2)
