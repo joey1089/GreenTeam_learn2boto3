@@ -8,11 +8,11 @@ getObj_ec2 = boto3.client('ec2') # Resource object to create the ec2 instances
 stop_ec2 = boto3.resource('ec2', region_name='us-east-1') # Resource Object to stop the ec2 instances
 start_ec2 = boto3.resource('ec2', region_name='us-east-1') # Resource Object to start the ec2 instances
 terminate_ec2 = boto3.client('ec2') # Resources Object to terminate the ec2 instances
-
+list_instances = boto3.resource('ec2', region_name='us-east-1') # Resource Object to list running ec2 instances
 
 
 def create_ec2(ec2Obj,Min,Max,imageid,instancetype):
-    '''To create ec2 instances'''
+    '''Fn to create ec2 instances'''
     
     get_response = ec2Obj.run_instances(ImageId=imageid,
             InstanceType=instancetype,
@@ -85,3 +85,16 @@ def termin_ec2(ec2Obj):
 #call the fn
 terminated_ec2 =termin_ec2(terminate_ec2)
 print("Get the response : ",terminated_ec2)
+
+
+#Code to list the running ec2 instances
+def list_running_instances(ec2):
+    '''Start the stopped ec2 instances'''
+    running_list = []
+    running_instances = ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['running']},{'Name': 'tag:Environment','Values':['Dev']}])
+    for instance in running_instances:
+        id=instance.id        
+        running_instances.append(ec2.instances.filter(InstanceIds=[id]).running())
+    return running_instances
+
+get_starting_list = list_running_instances(list_instances)
