@@ -94,7 +94,7 @@ def list_running_instances(ec2):
 count = 0
 clr_scrn()
 print("================= Welcome to EC2 Operations(Create,Stop,Start and Terminate EC2) ================")
-userinput = int(input("Estimated operation : "))
+userinput = int(input("Estimated Total Operation needed now(enter value more than 0 to proceed) : "))
 while count < userinput:
     print("if we have count < userinput",count <= userinput)
     user_operations = int(input("\n To Create an EC2 Instance enter (1)\n To Stop Instances, enter (2)\n To Start enter (3)\n To List (4)\n To Terminate (5) : "))
