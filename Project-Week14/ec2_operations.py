@@ -1,7 +1,7 @@
 #The plan of this project is to start and stop ec2 instances as and when needed but also terminate instances whenever the user wants
 # Here we create EC2 Instances and list the created EC2 Instances
 #<----- Work pending in intergration to call each fn to perform operations whenever needed ------>
-#<----- Runs only on linux system right now ------>
+#<----- Prior to running this code, 1.install aws cli then set aws configure and install pip, then boto3 ------>
 import boto3
 import os
 
@@ -84,6 +84,7 @@ def list_running_instances(ec2):
     '''Start the stopped ec2 instances'''
     running_list = []
     running_instances = ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['running']},{'Name': 'tag:Environment','Values':['Dev']}])
+    #running_instances = ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['running','stopped']},{'Name': 'tag:Environment','Values':['Dev']}])
     for instance in running_instances:
         id=instance.id        
         running_instances.append(ec2.instances.filter(InstanceIds=[id]).running())
