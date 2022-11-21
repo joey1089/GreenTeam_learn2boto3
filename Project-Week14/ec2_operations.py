@@ -1,13 +1,13 @@
 #The plan of this project is to start and stop ec2 instances as and when needed but also terminate instances whenever the user wants
-# Here we create EC2 Instances and list the created EC2 Instances
-#<----- Work pending in intergration to call each fn to perform operations whenever needed ------>
+#<----- Work pending in intergration to call each fn to perform operations based on user needs ------>
+#Check out EC2 instance state in https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 #<----- Prior to running this code, 1.install aws cli then set aws configure and install pip, then boto3 ------>
 import boto3
 import os
 
 
 def clr_scrn():
-    '''This method clears the screen'''
+    '''This method clears the linux\windows terminal screen'''
     if os.name == 'posix':
         os.system('clear')
     else:
@@ -93,8 +93,8 @@ def list_running_instances(ec2):
 #get started here to select what operations to be performed
 count = 0
 clr_scrn()
-userinput = int(input("Estimated operation : "))
 print("================= Welcome to EC2 Operations(Create,Stop,Start and Terminate EC2) ================")
+userinput = int(input("Estimated operation : "))
 while count < userinput:
     print("if we have count < userinput",count <= userinput)
     user_operations = int(input("\n To Create an EC2 Instance enter (1)\n To Stop Instances, enter (2)\n To Start enter (3)\n To List (4)\n To Terminate (5) : "))
