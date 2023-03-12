@@ -12,7 +12,7 @@ def upload2S3(res_s3, buckets):
 
         res_s3.upload_fileobj(
             Fileobj=data, 
-            Bucket='s3bucket4me2test02', 
+            Bucket='s3bucket4me2test01', 
             Key='text01.txt'
         )
     return
