@@ -1,15 +1,13 @@
 import boto3
-import ex
+from botocore.exceptions import ClientError
+from listbuckets import get_bucketlist
 
 def check_bucket_status():
-    """
-    This function checks if bucket has public access ot private access.
-    :return: None
-    """
+    """ This method checks if bucket has public access or private access. """
     s3_client = boto3.client("s3")
     try:
         response = s3_client.get_bucket_policy_status(Bucket="testbucket-frompython-2")
-        print(response["PolicyStatus"])
+        return response["PolicyStatus"]
     except ClientError as e:
         # if you do not have any policy attached to bucket it will throw error
         # An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation:
@@ -17,10 +15,7 @@ def check_bucket_status():
         print("No policy attached to this bucket")
 
 def set_bucket_policy():
-    """
-    This function adds policy to bucket.
-    :return: None
-    """
+    """ This method adds public policy to a bucket. """
     # policy for making all objects in bucket public by default
     public_policy = """{
       "Id": "Policy1577423306792",
@@ -40,10 +35,10 @@ def set_bucket_policy():
       ]
     }"""
     s3_client = boto3.client("s3")
-
+    bucket_list = get_bucketlist()
     try:
         response = s3_client.put_bucket_policy(
-            Bucket="testbucket-frompython-2", Policy=public_policy
+            Bucket=bucket_list, Policy=public_policy
         )
         print(response)
         # checking bucket status. This should show us s3 bucket is public now
