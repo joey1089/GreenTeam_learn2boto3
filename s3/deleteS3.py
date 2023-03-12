@@ -22,8 +22,7 @@ from listbuckets import get_bucketlist
 
 def delete_all_objects_from_s3_folder():
     """
-    This function deletes all files in a folder from S3 bucket
-    :return: None
+    This method deletes all file objects in a folder from S3 buckets    
     """
     s3_client = boto3.client("s3")
     # get the list of buckets
