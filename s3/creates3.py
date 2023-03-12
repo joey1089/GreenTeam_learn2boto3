@@ -15,10 +15,11 @@ get_userinput = str(input("Enter the unique bucket name : "))
 get_bucketname = resource_s3.Bucket(get_userinput)
 # Creates a bucket with ACL as public read
 # response = get_bucketname.create_bucket() doesn't accept arugments without Bucket passed
+
 response = get_bucketname.create(  
     ACL = 'private',
-    CreateBucketConfiguration={
-        'LocationConstraint': 'us-east-1' #check why only us-east-2 is accepted
-    },
+    # CreateBucketConfiguration={
+    #     'LocationConstraint': 'us-east-1' #check why only us-east-2 is accepted
+    # },
 )
 print("s3 response :",response)
