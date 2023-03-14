@@ -37,7 +37,7 @@ S3_bucket_list = get_bucketlist()
 
 # for bucket in buckets:
 #     print("S3 bucket name : ",bucket["Name"])
-if S3_bucket_list != []:
+if S3_bucket_list != False:
     print(upload2S3(resource_s3,S3_bucket_list))
 else:
     print("\n No S3 Buckets exist in the account! \n")
